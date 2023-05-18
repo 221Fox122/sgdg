@@ -55,39 +55,50 @@ sotr = [
     (20, 'Конченных Екатерина Михаиловна', 23543252, 6465),
     (21, 'Деревяшкина Виктория Романовна', 345326236, 6454),
 ]
+
+def serch():
+    table1.delete(*table1.get_children())
+    for row1 in sotr:
+        print(fio_entry.get(), inn_entry.get())
+        if fio_entry.get() == row1[1] or int(inn_entry.get()) == row1[3]:
+            table1.insert('', tkinter.END, values=row1)
+def clear():
+    table1.delete(*table1.get_children())
+    for row1 in sotr:
+        table1.insert('', tkinter.END, values=row1)
 heads1 = ["№", "ФИО сотрудника", "   Снилс сотрудника   ", "ИНН сотрудника"]
 heads2 = ['№', 'Наименование контрагента', 'ИНН контрагента']
 table1 = ttk.Treeview(tab1, show='headings')
 scr_p1 = ttk.Scrollbar(tab1, command=table1.yview)
 table1 = ttk.Treeview(tab1, show='headings', yscrollcommand=scr_p1.set)
 table1.configure(yscrollcommand=scr_p1.set)
-scr_p1.grid(row=1, column=1, sticky='nsew')
+scr_p1.grid(row=2, column=3, sticky='nsew')
 window.grid_rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
-# company_label = tkinter.Label(tab1, text="Наименование контрагента")
-# company_label.grid(row=2, column=1)
-#
-# inn_label = tkinter.Label(tab1, text="ИНН контрагента")
-# inn_label.grid(row=2, column=0)
-#
-# company_entry = tkinter.Entry(tab1)
-# company_entry.grid(row=3, column=0)
-#
-# inn_label = tkinter.Entry(tab1)
-# inn_label.grid(row=3, column=1)
-#
-# confirm_button = tkinter.Button(tab1, text="Применить")
-# confirm_button.grid(row=2, column=2, sticky="news", padx=20)
-#
-# reset_button = tkinter.Button(tab1, text="Сбросить")
-# reset_button.grid(row=2, column=3, sticky="news", padx=20)
+company_label = tkinter.Label(tab1, text="ФИО сотрудника")
+company_label.grid(row=0, column=1)
+
+inn_label = tkinter.Label(tab1, text="ИНН сотрудника")
+inn_label.grid(row=0, column=0)
+
+fio_entry = tkinter.Entry(tab1)
+fio_entry.grid(row=1, column=1)
+
+inn_entry = tkinter.Entry(tab1)
+inn_entry.grid(row=1, column=0)
+
+confirm_button = tkinter.Button(tab1, text="Применить", command=serch)
+confirm_button.grid(row=0, column=2, sticky="news", padx=20)
+
+reset_button = tkinter.Button(tab1, text="Сбросить", command=clear)
+reset_button.grid(row=1, column=2, sticky="news", padx=20)
 
 
 table2 = ttk.Treeview(tab2, show='headings')
 scr_p2 = ttk.Scrollbar(tab2, command=table2.yview)
 table2 = ttk.Treeview(tab2, show='headings', yscrollcommand=scr_p2.set)
 table2.configure(yscrollcommand=scr_p2.set)
-scr_p2.grid(row=1, column=1, sticky="ns")
+scr_p2.grid(row=3, column=4, sticky="ns")
 window.grid_rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 
@@ -108,8 +119,8 @@ for row2 in companies:
     table2.insert('', tkinter.END, values=row2)
 
 
-table1.grid(row=1, column=0)
-table2.grid(row=1, column=0)
+table1.grid(row=2, column=0, columnspan=3)
+table2.grid(row=2, column=0)
 
 window.mainloop()
 
