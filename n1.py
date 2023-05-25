@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import ttk
-
+ 
 # Создание окна программы
 window = tkinter.Tk()
 
