@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import ttk
-
+ 
 
 #win1
 window = tkinter.Tk()
