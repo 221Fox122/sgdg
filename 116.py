@@ -1,10 +1,16 @@
 import tkinter
 from tkinter import ttk
- 
-
+comp2 = []
+comp1 = open("comp.txt", encoding="utf-8")
+sotr1 = open("sotr.txt", encoding="utf-8")
+for i in comp1:
+    comp2.append(i)
+print(comp2)
+for i in (len(comp2)):
+    
 #win1
 window = tkinter.Tk()
-window.title("Добро пожаловать!")
+window.title("Контрагенты и сотрудники")
 window.geometry('1800x1200')
 tab_control = ttk.Notebook(window)
 tab1 = ttk.Frame(tab_control)
@@ -94,10 +100,9 @@ def clear2():
 
 
 #3 Добавление 1
-
 def add11():
     def add12():
-        sotr.append(((len(sotr) + 1), f_entry3.get()+" "+i_entry3.get()+" "+o_entry3.get(), cn_entry3.get(), inn_entry3.get(), con_entry3.get()))
+        sotr.append(((len(companies) + 1), f_entry3.get()+" "+i_entry3.get()+" "+o_entry3.get(), inn_entry3.get(), con_entry3.get()))
         table1.delete(*table1.get_children())
         for row1 in sotr:
             table1.insert('', tkinter.END, values=row1)
@@ -107,7 +112,7 @@ def add11():
     frame = tkinter.Frame(window2)
     frame.pack()
 
-    # добавление сотрудников
+    # добавление контрагентов
     f_label3 = tkinter.Label(frame, text="Фамилия")
     f_label3.grid(row=0, column=0)
     f_entry3 = tkinter.Entry(frame)
@@ -128,7 +133,7 @@ def add11():
     cn_entry3 = tkinter.Entry(frame)
     cn_entry3.grid(row=1, column=3)
 
-    inn_label3 = tkinter.Label(frame, text="ИНН сотрудника")
+    inn_label3 = tkinter.Label(frame, text="ИНН Сотрудника")
     inn_label3.grid(row=0, column=4)
     inn_entry3 = tkinter.Entry(frame)
     inn_entry3.grid(row=1, column=4)
@@ -138,8 +143,35 @@ def add11():
     con_entry3 = tkinter.Entry(frame)
     con_entry3.grid(row=1, column=5)
 
-    add_button1 = tkinter.Button(frame, text="Добавить", command=add12)
-    add_button1.grid(row=1, column=6, sticky="news", padx=0)
+    add_button3 = tkinter.Button(frame, text="Добавить", command=add12)
+    add_button3.grid(row=1, column=6, sticky="news", padx=0)
+
+
+def add21():
+    def add22():
+        companies.append(((len(companies) + 1), ip_entry4.get(), inn_entry4.get()))
+        table2.delete(*table2.get_children())
+        for row2 in companies:
+            table2.insert('', tkinter.END, values=row2)
+    window3 = tkinter.Tk()
+    window3.title("Добавление контрагентов")
+    window3.geometry('400x100')
+    frame2 = tkinter.Frame(window3)
+    frame2.pack()
+
+    # добавление сотрудников
+    ip_label4 = tkinter.Label(frame2, text="ИП контрагента")
+    ip_label4.grid(row=0, column=0)
+    ip_entry4 = tkinter.Entry(frame2)
+    ip_entry4.grid(row=1, column=0)
+
+    inn_label4 = tkinter.Label(frame2, text="ИНН контрагента")
+    inn_label4.grid(row=0, column=4)
+    inn_entry4 = tkinter.Entry(frame2)
+    inn_entry4.grid(row=1, column=4)
+
+    add_button4 = tkinter.Button(frame2, text="Добавить", command=add22)
+    add_button4.grid(row=1, column=6, sticky="news", padx=0)
 
 
 # таблица
@@ -171,7 +203,7 @@ reset_button1 = tkinter.Button(tab1, text="Сбросить", command=clear1)
 reset_button1.grid(row=1, column=2, sticky="news", padx=30)
 
 add_button1 = tkinter.Button(tab1, text="Добавить", command=add11)
-add_button1.grid(row=0, column=4, sticky="news", padx=0)
+add_button1.grid(row=1, column=4, sticky="news", padx=0)
 
 
 heads2 = ['№', 'Наименование контрагента', 'ИНН контрагента']
@@ -201,6 +233,9 @@ confirm_button2.grid(row=0, column=2, sticky="news", padx=0)
 reset_button2 = tkinter.Button(tab2, text="Сбросить", command=clear2)
 reset_button2.grid(row=1, column=2, sticky="news", padx=0)
 
+
+add_button2 = tkinter.Button(tab2, text="Добавить", command=add21)
+add_button2.grid(row=1, column=6, sticky="news", padx=0)
 
 table1['columns'] = heads1
 table2['columns'] = heads2
