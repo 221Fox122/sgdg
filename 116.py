@@ -1,5 +1,8 @@
 import tkinter
 from tkinter import ttk
+
+
+#работа с файлами
 comp2 = []
 comp1 = open("comp.txt", encoding="utf-8")
 sotr1 = open("sotr.txt", encoding="utf-8")
