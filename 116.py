@@ -6,7 +6,7 @@ sotr1 = open("sotr.txt", encoding="utf-8")
 for i in comp1:
     comp2.append(i)
 print(comp2)
-for i in (len(comp2)):
+#for i in (len(comp2)):
     
 #win1
 window = tkinter.Tk()
