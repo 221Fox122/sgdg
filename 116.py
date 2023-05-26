@@ -10,7 +10,8 @@ for i in comp1:
     comp2.append(i)
 print(comp2)
 #for i in (len(comp2)):
-    
+
+
 #win1
 window = tkinter.Tk()
 window.title("Контрагенты и сотрудники")
@@ -21,7 +22,6 @@ tab_control.add(tab1, text='Сотрудники')
 tab_control.pack(expand=1, fill='both')
 tab2 = ttk.Frame(tab_control)
 tab_control.add(tab2, text='Контрагенты')
-
 
 
 companies = [
@@ -47,6 +47,8 @@ companies = [
     (20, 'ИП Конченных Екатерина Михаиловна', 6465),
     (21, 'ИП Деревяшкина Виктория Романовна', 6454),
 ]
+
+
 sotr = [
     (1, 'Онохов Павел Сергеевич', 21452354235, 1234, 'ИП Онохов Павел Сергеевич'),
     (2, 'Мухутдинов Руслан Маисович', 123421415, 4321, 'ИП Мухутдинов Руслан Маисович'),
@@ -70,6 +72,8 @@ sotr = [
     (20, 'Конченных Екатерина Михаиловна', 23543252, 6465, 'ИП Конченных Екатерина Михаиловна'),
     (21, 'Деревяшкина Виктория Романовна', 345326236, 6454, 'ИП Деревяшкина Виктория Романовна'),
 ]
+
+
 #1 поиск сотрудников
 def serch1():
     table1.delete(*table1.get_children())
@@ -150,6 +154,7 @@ def add11():
     add_button3.grid(row=1, column=6, sticky="news", padx=0)
 
 
+#4 Добавление 2    
 def add21():
     def add22():
         companies.append(((len(companies) + 1), ip_entry4.get(), inn_entry4.get()))
@@ -162,7 +167,7 @@ def add21():
     frame2 = tkinter.Frame(window3)
     frame2.pack()
 
-    # добавление сотрудников
+    # добавление контрагентов
     ip_label4 = tkinter.Label(frame2, text="ИП контрагента")
     ip_label4.grid(row=0, column=0)
     ip_entry4 = tkinter.Entry(frame2)
